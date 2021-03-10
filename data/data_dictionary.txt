@@ -1,0 +1,33 @@
+---- id variable ----
+FIPS: unique county FIPS id
+
+---- Explanatory variables ----
+income: median household income (ACS)
+political_leaning: (#rep_votes - #dem_votes)/(total_voters)
+denisty: population density
+crowding: household crowding (from SVI - number of households with more people than rooms)
+dist_to_airport: distance to the closest major airport (calcualted using centroid of county)
+average_strict: the average stringency of governor interventions across the entire pandemic
+strict_p<x>: the average stringency of governor interventions in period x
+google_p<x>: average mobility in period x (average of recreational and workplace mobility)
+per_nursing: average number of daily nursing home residents divided by population
+per_incar: percent of population in jail in 2018
+obesity: percent of population that is obese
+per_wnh: percent of population White not Hispanic
+per_black: percent of population Black
+per_asian: percent of population Asian
+per_hispanic: percent of population Hispanic
+per_other: percent of population other race or 2+ races
+per_poc: percent of population people of color
+19under: percent of population under 19
+65plus: percent of population over 65
+per_atleast_hs: percent of population with a high school diploma
+mask_usage_p<x>: interpolated mask usage in period x
+
+---- Response variables ----
+deaths_<x>: number of deaths in period x
+length_<x>: length of outbreak in period x as determined by event detection (no longer used)
+rate_<x>: deaths_<x> divided by population. This is the main response variable
+
+
+
