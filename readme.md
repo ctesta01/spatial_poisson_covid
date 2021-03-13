@@ -9,3 +9,5 @@
 [Spatial Models in Stan](https://mc-stan.org/workshops/dec2017/spatial_smoothing_icar.html)
 
 [Exact Sparse CAR models in Stan](https://mc-stan.org/users/documentation/case-studies/mbjoseph-CARStan.html)
+
+[GitHub repo for Exact Space CAR models in Stan](https://github.com/mbjoseph/CARstan)
