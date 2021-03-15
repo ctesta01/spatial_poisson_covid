@@ -1,6 +1,3 @@
-# library(rstan)
-library(cmdstanr)
-library(zeallot)
 
 # dependencies
 library(here)
@@ -13,7 +10,7 @@ source(here("code/load_and_merge_data.R"))
 source(here("code/regression_formulas.R"))
 
 # prepare data as if for carbayes
-source(here("code/prepare_data_for_carbayes.R"))
+source(here("code/prepare_data_for_spatial_modeling.R"))
 
 # define variables of interest
 source(here("code/variables_of_interest.R"))
@@ -22,11 +19,14 @@ source(here("code/variables_of_interest.R"))
 model <- cmdstanr::cmdstan_model(stan_file = here('code/model_sparse_car.stan'))
 
 # run models for each time period
-# for (period in 1:3) {
+# for (period in 2:3) {
 period <- 2
   
+  # retrieve variables of interest
   variables_of_interest_period <- variables_of_interest[[period]]
   
+  # create the data frame df_spatial_period which has the counties, their
+  # covariates, and deaths for the seeded counties with neighbors
   c(df_spatial_period, W) %<-% create_spatial_df_and_W(df_spatial, 
       c(paste0('deaths_', period), variables_of_interest_period))
     
@@ -64,15 +64,14 @@ period <- 2
   sample_fit <- model$sample(
     data = model_data,
     seed = 123,
-    chains = 2,
-    parallel_chains = 2,
+    chains = 4,
+    parallel_chains = 4,
     iter_warmup = 1500,
-    iter_sampling = 2000,
-    init = list(optim_fit_outcome, optim_fit_outcome)
+    iter_sampling = 8000,
+    init = list(optim_fit_outcome, optim_fit_outcome, optim_fit_outcome, optim_fit_outcome)
     )
   
   # save the stan model
-  # saveRDS(sample_fit, here(
   sample_fit$save_output_files(
     dir = here("models/"),
     basename = paste0('stan_fit_period', period, '_selected_covariates'))
@@ -80,7 +79,7 @@ period <- 2
 
 
 # use shinystan to inspect the stan model --- 
-#    check the Rhat coefficients for convergence! 
+#    check the Rhat coefficients & other diagnostics for convergence! 
 
 # library(shinystan)
 # stanfit <- rstan::read_stan_csv(sample_fit$output_files())
@@ -89,15 +88,3 @@ period <- 2
 
 # Notes -------------------------------------------------------------------
 
-# Chains 2 and 3 finished successfully with no warnings, but 
-# chain 1 had the following concerning warning:
-# 
-#> 4000 of 4000 (100.0%) transitions hit the maximum treedepth limit of 10 or
-#> 2^10-1 leapfrog steps. Trajectories that are prematurely terminated due to
-#> this limit will result in slow exploration. Increasing the max_treedepth limit
-#> can avoid this at the expense of more computation. If increasing max_treedepth
-#> does not remove warnings, try to reparameterize the model.
-
-# For reference, the 3500 (total = warmup + sampling) iterations that I ran 
-# took 2197.8 seconds or 36 minutes for period 1, 1083.1 seconds or 18 minutes 
-# for period 2, and 539.1 or 9 minutes for period 3. 

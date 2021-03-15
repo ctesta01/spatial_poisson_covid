@@ -1,9 +1,7 @@
 
-#' ---
-#' title: "Spatial Modeling COVID-19 Deaths at the County Level"
-#' ---
-#' 
-
+###############################################################
+# estimate and plot non-spatial poisson models + correlations #
+###############################################################
 
 # dependencies
 library(here)
@@ -93,58 +91,62 @@ ggraph(graph_cors, layout='kk') +
 ggsave(here("figures/correlations_gt_pt5.png"), width=10, height=10)
 
 # spatial modeling ------------------------------------------------------------------------------------------------
-
-source(here("code/prepare_data_for_carbayes.R"))
-
-# model for period 1
-
-bottom_row <- function(df) { df[nrow(df),] }
-second_half <- function(df) { df[floor(nrow(df)/2):nrow(df),] }
-
-model1_coefs <- poisson_model_p1$coefficients
-model1_var <- diag(vcov(poisson_model_p1)) 
-
-model1_chain1 <- CARBayes::S.CARleroux(
-  regression_formula_p1,
-  data = df_spatial %>% st_drop_geometry(),
-  family='poisson', 
-  prior.mean.beta = model1_chain1$samples$beta %>% bottom_row(), 
-    # model1_coefs, # + 
-    # rnorm(n = length(model1_coefs), mean = 0, 
-    #       sd = abs(model1_coefs)/10), # sqrt(model1_var) * 1000),
-  # prior.var.beta = # apply(model1_chain1$samples$beta %>% second_half(), 2, function(x) max(x) - min(x))^3,
-    # model1_var * 10000000,
-    # abs(model1_coefs) * 100000,
-  # formula.omega = short_regression_formula_p1_rhs,
-  W = W, burnin = 1e3, n.sample = 3e4, thin=200)
-
-plot(model1_chain1$samples$beta)
-
-saveRDS(model1_chain1, 'model1_chain1.rds')
-
-# model for period 2
-
-model2_chain1 <- CARBayes::S.CARbym(
-  regression_formula_p2,
-  data = df_spatial %>% st_drop_geometry(),
-  family='zip', 
-  prior.mean.beta = 
-    poisson_model_p1$coefficients,
-  formula.omega = short_regression_formula_p1_rhs,
-  W = W, burnin = 1e5, n.sample = 3e5, thin=100)
-
-saveRDS(chain2, 'model2_chain1.rds')
-
-# model for period 3
-
-model2_chain1 <- CARBayes::S.CARbym(
-  regression_formula_p2,
-  data = df_spatial %>% st_drop_geometry(),
-  family='zip', 
-  prior.mean.beta = 
-    poisson_model_p1$coefficients,
-  formula.omega = short_regression_formula_p1_rhs,
-  W = W, burnin = 1e5, n.sample = 3e5, thin=100)
-
-saveRDS(chain2, 'model2_chain1.rds')
+# 
+# we didn't end up using the carbayes approach because we couldn't get the 
+# markov chains to converge.
+#
+# 
+# source(here("code/prepare_data_for_carbayes.R"))
+# 
+# # model for period 1
+# 
+# bottom_row <- function(df) { df[nrow(df),] }
+# second_half <- function(df) { df[floor(nrow(df)/2):nrow(df),] }
+# 
+# model1_coefs <- poisson_model_p1$coefficients
+# model1_var <- diag(vcov(poisson_model_p1)) 
+# 
+# model1_chain1 <- CARBayes::S.CARleroux(
+#   regression_formula_p1,
+#   data = df_spatial %>% st_drop_geometry(),
+#   family='poisson', 
+#   prior.mean.beta = model1_chain1$samples$beta %>% bottom_row(), 
+#     # model1_coefs, # + 
+#     # rnorm(n = length(model1_coefs), mean = 0, 
+#     #       sd = abs(model1_coefs)/10), # sqrt(model1_var) * 1000),
+#   # prior.var.beta = # apply(model1_chain1$samples$beta %>% second_half(), 2, function(x) max(x) - min(x))^3,
+#     # model1_var * 10000000,
+#     # abs(model1_coefs) * 100000,
+#   # formula.omega = short_regression_formula_p1_rhs,
+#   W = W, burnin = 1e3, n.sample = 3e4, thin=200)
+# 
+# plot(model1_chain1$samples$beta)
+# 
+# saveRDS(model1_chain1, 'model1_chain1.rds')
+# 
+# # model for period 2
+# 
+# model2_chain1 <- CARBayes::S.CARbym(
+#   regression_formula_p2,
+#   data = df_spatial %>% st_drop_geometry(),
+#   family='zip', 
+#   prior.mean.beta = 
+#     poisson_model_p1$coefficients,
+#   formula.omega = short_regression_formula_p1_rhs,
+#   W = W, burnin = 1e5, n.sample = 3e5, thin=100)
+# 
+# saveRDS(chain2, 'model2_chain1.rds')
+# 
+# # model for period 3
+# 
+# model2_chain1 <- CARBayes::S.CARbym(
+#   regression_formula_p2,
+#   data = df_spatial %>% st_drop_geometry(),
+#   family='zip', 
+#   prior.mean.beta = 
+#     poisson_model_p1$coefficients,
+#   formula.omega = short_regression_formula_p1_rhs,
+#   W = W, burnin = 1e5, n.sample = 3e5, thin=100)
+# 
+# saveRDS(chain2, 'model2_chain1.rds')
 
