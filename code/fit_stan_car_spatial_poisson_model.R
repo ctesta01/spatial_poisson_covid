@@ -19,8 +19,7 @@ source(here("code/variables_of_interest.R"))
 model <- cmdstanr::cmdstan_model(stan_file = here('code/model_sparse_car.stan'))
 
 # run models for each time period
-# for (period in 2:3) {
-period <- 2
+for (period in 2:3) {
   
   # retrieve variables of interest
   variables_of_interest_period <- variables_of_interest[[period]]
@@ -75,7 +74,7 @@ period <- 2
   sample_fit$save_output_files(
     dir = here("models/"),
     basename = paste0('stan_fit_period', period, '_selected_covariates'))
-# }
+}
 
 
 # use shinystan to inspect the stan model --- 
