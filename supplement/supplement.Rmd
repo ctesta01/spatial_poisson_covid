@@ -1,0 +1,178 @@
+---
+title: Supplement to The Evolving Roles of Partisanship and Vulnerability in the COVID-19
+  Pandemic
+output: 
+  pdf_document:
+    keep_tex: true
+bibliography: bibliography.bib
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE,
+  message = FALSE,
+  warning = FALSE,
+  out.width = '70%',
+  out.height = '40%',
+  fig.align = 'center')
+
+library(here)
+library(knitr)
+library(cowplot)
+library(patchwork)
+```
+
+## Introduction
+
+These supplemental materials present a conditional auto-regressive (CAR) 
+Poisson model of COVID-19 county death rates in the United States.  The
+inclusion of a conditional auto-regressive spatial component in this model is
+intended to address the question of how robust the relationships are between
+observed covariates and COVID-19 death rates given the expected correlations in
+rates between counties which neighbor one another. 
+
+## Methods 
+
+The implementation of our model is based on the Stan Case Study, *Exact Sparse
+CAR Models in Stan*  [@exact-sparse-car]. Spatial models including CAR models
+and improvements on the Besag-York-Mollié model have often been used in current
+epidemiology and disease risk mapping applications to distinguish spatially
+structured effects from the effects of observed covariates [@lee_bayesian_2014;
+@wakefield_disease_2007; Morris et al. (2019)].
+
+To describe our model, we write the deaths observed as $y_1, y_2, ..., y_{2683}$
+for each of the 2,683 counties which have neighboring counties and for which all
+covariates were available and hence were considered in our main manuscript. 
+Letting $X_i$ for $i$ in 1...2,683 represent the vector of observed covariates for 
+the $i$th county and similarly $P_i$ represent the population of the $i$th county,
+we write that 
+
+$$y_i \sim \text{Poisson}(\text{exp}(X_i \beta + \phi_i + \text{log}(P_i))),$$
+
+where $\beta$ is a vector of the estimated coefficients for the covariates and
+$\phi_i$ is the the spatial component of the model. See @exact-sparse-car for
+the details of the prior distributions on $\beta$ and $\phi$. This model is
+fit twice with data from period 2 and period 3 separately.
+
+Given the computational complexity in fitting these models with over 2600 county
+observations and a large number of covariates, we opted to only include a
+selection of the variables which had the highest measures of feature importance
+in the LASSO and spatial linear models from our main manuscript. In order to 
+include parameters parsimoniously, we chose to include parameters which 
+appeared in the top three most important features from the LASSO and spatial 
+linear models for periods 2 and 3. Since we only modeled the probability of 
+counties being seeded during period 1 and did not model death rates, we 
+have only calibrated the spatial model presented here to the deaths data from
+periods 2 and 3.
+
+All analyses in these supplemental materials were conducted using R version
+4.0.2 [@R-base] and the model analyses were conducted in the Bayesian
+statistical computing and modeling framework Stan using the No-U-Turns
+Hamiltonian Monte Carlo Sampler [@Stan;
+@homan_no-u-turn_2014].
+
+\newpage
+
+## Results
+
+### Parameter Estimates
+
+We found that the results of fitting a spatial sparse CAR Poisson model were
+consistent with our findings from the main analyses for periods 2 and 3.
+
+```{r, out.width='100%', fig.cap="Non-spatial parameter estimates for periods 2 and 3"}
+theme_set(
+  cowplot::theme_cowplot() +
+    theme(text = element_text(family = '')))
+
+p1 <- ggdraw() + 
+  draw_image(here('figures/stan_car_poisson_period_2.png'))
+
+p2 <- ggdraw() + 
+  draw_image(here('figures/stan_car_poisson_period_3.png'))
+
+p <- plot_grid(p1, p2)
+
+print(p)
+```
+
+These model estimates reflect the associations between county-level covariates and
+COVID-19 death rates after accounting for the estimated spatial correlation structure included in the model.
+
+We found that higher percentages of residents in nursing homes, Black
+non-Hispanic population percentages, and Hispanic population percentages at the
+county level were associated with higher COVID-19 death rates during period
+2. Counties with higher high school graduation rates were associated with having
+lower COVID-19 death rates in period 2. During period 3, counties where the
+population voted more Republican (positive political lean), and counties with
+higher percentages of the population living in nursing homes were associated
+with higher COVID-19 death rates. Counties with higher median income, greater
+high school graduation rates, and policy strictness during period 3 were found
+to be have lower COVID-19 death rates.
+
+\newpage
+
+### Spatial Components
+
+We present the spatial model component below visualized as 
+$\text{exp}(\phi_i + \text{log}(P_i))$, the expected COVID-19 deaths per capita
+in each period conditioning out the effects from covariates.
+
+```{r, out.width='80%', out.height = '60%', fig.cap='Spatial model component during periods 2 and 3'}
+p1 <- ggdraw() + 
+  draw_image(here('figures/spatial_terms_p2.png'))
+p2 <- ggdraw() + 
+  draw_image(here('figures/spatial_terms_p3.png'))
+p <- plot_grid(p1, p2, nrow=2)
+print(p)
+```
+
+Supplemental Figure 2 allows us to visualize the estimated spatial correlation
+structure and how neighboring counties tend to be correlated with one another. 
+In essence, we expect to see that counties which have high rates are surrounded 
+by counties that also have high rates and vice-versa for low rate counties.
+
+\newpage
+
+### Model Convergence Diagnostics
+
+```{r, out.width = '60%', out.height='25%', fig.cap = 'Traceplots for non-spatial parameters'}
+p1 <- ggdraw() + 
+  draw_image(here('figures/traceplot_period_2.png'))
+
+p2 <- ggdraw() + 
+  draw_image(here('figures/traceplot_period_3.png'))
+
+p <- plot_grid(p1, p2)
+print(p)
+```
+
+Contemporary advice recommends that Bayesian models should be considered 
+to have converged only if the Markov chains have convergence diagnostics of
+$\hat{R} < 1.05$ [@rhat; @vehtari_rank-normalization_2020]. In Supplemental
+Figure 4 we present the $\hat{R}$ convergence diagnostics for
+our non-spatial and spatial effects for both periods 2 and 3 which are all 
+below 1.05. 
+
+```{r, out.height='40%', out.width = '100%', fig.cap = 'Convergence diagnostics for all parameters'}
+
+p1 <- ggdraw() + 
+  draw_image(here('figures/stan_car_poisson_period_2_rhats.png'))
+
+p2 <- ggdraw() + 
+  draw_image(here('figures/stan_car_poisson_period_3_rhats.png'))
+
+
+p3 <- ggdraw() + 
+  draw_image(here('figures/stan_car_poisson_period_2_spatial_rhats.png'))
+
+p4 <- ggdraw() + 
+  draw_image(here('figures/stan_car_poisson_period_3_spatial_rhats.png'))
+
+p <- plot_grid(p1, p2, p3, p4, nrow=2, rel_heights = c(0.5, 1.5))
+print(p)
+```
+
+\newpage
+
+## References
