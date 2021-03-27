@@ -2,6 +2,7 @@
 #SBATCH -N 1
 #SBATCH --ntasks=1
 #SBATCH --array=2-3
+#SBATCH --cpus-per-task=8
 #SBATCH --time=12:00:00
 #SBATCH --mem-per-cpu=10GB
 #SBATCH --job-name=mcmc
