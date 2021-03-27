@@ -3,7 +3,6 @@
 # cluster dependencies #
 ########################
 
-library(rstan)
 library(cmdstanr)
 library(ggplot2)
 library(here)
