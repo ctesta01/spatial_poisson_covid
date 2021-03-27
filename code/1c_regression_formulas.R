@@ -56,3 +56,41 @@ regression_formula_p3 <- deaths_3 ~
   scaled_lat + 
   scaled_lon + 
   offset(log(population))
+
+
+
+# define variables of interest - this is a set of most of the variables;
+# white is omitted in favor of POC, density is omitted in favor of crowding;
+# under 19 is omitted in favor of 65+
+variables_of_interest <- list()
+variables_of_interest[[1]] <- list()
+variables_of_interest[[2]] <- c(
+  "scaled_income_p2", 
+  "scaled_political_leaning_p2", 
+  "scaled_per_poc_p2", 
+  "scaled_per_black_p2", 
+  "scaled_mask_usage_p2", 
+  "scaled_crowding_p2", 
+  "scaled_dist_to_airport_p2", 
+  "scaled_strict_p2", 
+  "scaled_google_p2", 
+  "scaled_per_nursing_p2", 
+  "scaled_65plus_p2", 
+  "scaled_lat_p2", 
+  "scaled_lon_p2")
+
+variables_of_interest[[3]] <- c(
+  "scaled_income_p3", 
+  "scaled_political_leaning_p3", 
+  "scaled_per_poc_p3", 
+  "scaled_per_black_p3", 
+  "scaled_mask_usage_p3", 
+  "scaled_crowding_p3", 
+  "scaled_dist_to_airport_p3", 
+  "scaled_strict_p3", 
+  "scaled_google_p3", 
+  "scaled_per_nursing_p3", 
+  "scaled_65plus_p3", 
+  "scaled_lat_p3", 
+  "scaled_lon_p3")
+
