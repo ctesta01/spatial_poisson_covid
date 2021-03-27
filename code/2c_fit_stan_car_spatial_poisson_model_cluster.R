@@ -4,13 +4,14 @@ library(here)
 source(here("code/2a_dependencies.R"))
 
 # define the period from arguments supplied to Rscript when running this file --
+# period has 1 added to it so that running periods 2 & 3 is easy to do on the cluster.
 # run this file from terminal as 
 # 
-#      Rscript 2c_fit_stan_car_spatial_poisson_model_cluster.R 2  
-#      Rscript 2c_fit_stan_car_spatial_poisson_model_cluster.R 3 
+#      Rscript 2c_fit_stan_car_spatial_poisson_model_cluster.R 1
+#      Rscript 2c_fit_stan_car_spatial_poisson_model_cluster.R 2 
 # 
 # the command-line arguments are used in 2d_run_script.sh
-period <- commandArgs(trailingOnly=T)[[1]]
+period <- commandArgs(trailingOnly=T)[[1]] + 1
 
 # compile stan model 
 model <- cmdstanr::cmdstan_model(stan_file = here('code/2b_model_sparse_car.stan'))
