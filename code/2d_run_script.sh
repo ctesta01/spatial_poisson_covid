@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH -N 4
-#SBATCH --array=1-2
+#SBATCH --array=2-3
 #SBATCH --time=12:00:00
 #SBATCH --mem-per-cpu=10GB
 #SBATCH --job-name=mcmc
