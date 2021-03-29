@@ -1,0 +1,4 @@
+models/stan_fit_period3_most_covariates-202103281248-3-6034c1.csv filter=lfs diff=lfs merge=lfs -text
+models/stan_fit_period3_most_covariates-202103281248-4-6034c1.csv filter=lfs diff=lfs merge=lfs -text
+models/stan_fit_period3_most_covariates-202103281248-1-6034c1.csv filter=lfs diff=lfs merge=lfs -text
+models/stan_fit_period3_most_covariates-202103281248-2-6034c1.csv filter=lfs diff=lfs merge=lfs -text
