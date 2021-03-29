@@ -21,4 +21,5 @@
 #     sbatch 2d_run_script.sh
 #
 module load R_core/4.0.2-fasrc01
+module load gcc/9.3.0-fasrc01
 srun Rscript 2c_fit_stan_car_spatial_poisson_model_cluster.R ${SLURM_ARRAY_TASK_ID}

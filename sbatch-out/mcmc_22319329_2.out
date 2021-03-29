@@ -1,0 +1,93 @@
+Initial log joint probability = -3.14221e+08 
+    Iter      log prob        ||dx||      ||grad||       alpha      alpha0  # evals  Notes  
+Error evaluating model log probability: Non-finite gradient. 
+Error evaluating model log probability: Non-finite gradient. 
+Error evaluating model log probability: Non-finite gradient. 
+      99        181126      0.653293       19660.2           1           1      152    
+    Iter      log prob        ||dx||      ||grad||       alpha      alpha0  # evals  Notes  
+     199        434137     0.0855651       5805.72      0.1586      0.1586      296    
+    Iter      log prob        ||dx||      ||grad||       alpha      alpha0  # evals  Notes  
+     299        439363     0.0942899       387.069           1           1      414    
+    Iter      log prob        ||dx||      ||grad||       alpha      alpha0  # evals  Notes  
+     399        439989      0.562658        1645.6           1           1      530    
+    Iter      log prob        ||dx||      ||grad||       alpha      alpha0  # evals  Notes  
+     499        440326     0.0305156       474.768      0.2191      0.2191      650    
+    Iter      log prob        ||dx||      ||grad||       alpha      alpha0  # evals  Notes  
+     599        440468     0.0285744       126.413       0.783       0.783      767    
+    Iter      log prob        ||dx||      ||grad||       alpha      alpha0  # evals  Notes  
+     699        440550      0.146564       203.286           1           1      889    
+    Iter      log prob        ||dx||      ||grad||       alpha      alpha0  # evals  Notes  
+     799        440598     0.0293445       292.879           1           1     1003    
+    Iter      log prob        ||dx||      ||grad||       alpha      alpha0  # evals  Notes  
+     899        440631     0.0410726       324.243      0.1878      0.1878     1127    
+    Iter      log prob        ||dx||      ||grad||       alpha      alpha0  # evals  Notes  
+     999        440664    0.00735136       84.9875      0.4841     0.04841     1253    
+    Iter      log prob        ||dx||      ||grad||       alpha      alpha0  # evals  Notes  
+    1099        440687    0.00382154       79.2509      0.4086      0.4086     1373    
+    Iter      log prob        ||dx||      ||grad||       alpha      alpha0  # evals  Notes  
+    1199        440693     0.0247245       90.5486           1           1     1487    
+    Iter      log prob        ||dx||      ||grad||       alpha      alpha0  # evals  Notes  
+    1299        440699    0.00178768       19.3177           1           1     1608    
+    Iter      log prob        ||dx||      ||grad||       alpha      alpha0  # evals  Notes  
+    1399        440702    0.00442479       78.1936      0.2144           1     1731    
+    Iter      log prob        ||dx||      ||grad||       alpha      alpha0  # evals  Notes  
+    1499        440708    0.00874973       49.5091           1           1     1857    
+    Iter      log prob        ||dx||      ||grad||       alpha      alpha0  # evals  Notes  
+    1599        440711    0.00322686        12.345      0.7337      0.7337     1978    
+    Iter      log prob        ||dx||      ||grad||       alpha      alpha0  # evals  Notes  
+    1699        440715      0.202492       33.4235           1           1     2098    
+    Iter      log prob        ||dx||      ||grad||       alpha      alpha0  # evals  Notes  
+    1799        440718    0.00585154       39.2863           1           1     2214    
+    Iter      log prob        ||dx||      ||grad||       alpha      alpha0  # evals  Notes  
+    1837        440718   0.000555492       11.3106           1           1     2260    
+Optimization terminated normally:  
+  Convergence detected: relative gradient magnitude is below tolerance 
+Finished in  13.3 seconds.
+Running MCMC with 4 parallel chains...
+
+Chain 1 Iteration:     1 / 33500 [  0%]  (Warmup) 
+Chain 2 Iteration:     1 / 33500 [  0%]  (Warmup) 
+Chain 3 Iteration:     1 / 33500 [  0%]  (Warmup) 
+Chain 4 Iteration:     1 / 33500 [  0%]  (Warmup) 
+Chain 3 Iteration:   100 / 33500 [  0%]  (Warmup) 
+Chain 1 Iteration:   100 / 33500 [  0%]  (Warmup) 
+Chain 2 Iteration:   100 / 33500 [  0%]  (Warmup) 
+Chain 4 Iteration:   100 / 33500 [  0%]  (Warmup) 
+Chain 4 Iteration:   200 / 33500 [  0%]  (Warmup) 
+Chain 3 Iteration:   200 / 33500 [  0%]  (Warmup) 
+Chain 2 Iteration:   200 / 33500 [  0%]  (Warmup) 
+Chain 1 Iteration:   200 / 33500 [  0%]  (Warmup) 
+Chain 4 Iteration:   300 / 33500 [  0%]  (Warmup) 
+Chain 2 Iteration:   300 / 33500 [  0%]  (Warmup) 
+Chain 1 Iteration:   300 / 33500 [  0%]  (Warmup) 
+Chain 3 Iteration:   300 / 33500 [  0%]  (Warmup) 
+Chain 4 Iteration:   400 / 33500 [  1%]  (Warmup) 
+Chain 2 Iteration:   400 / 33500 [  1%]  (Warmup) 
+Chain 1 Iteration:   400 / 33500 [  1%]  (Warmup) 
+Chain 3 Iteration:   400 / 33500 [  1%]  (Warmup) 
+Chain 4 Iteration:   500 / 33500 [  1%]  (Warmup) 
+Chain 2 Iteration:   500 / 33500 [  1%]  (Warmup) 
+Chain 1 Iteration:   500 / 33500 [  1%]  (Warmup) 
+Chain 3 Iteration:   500 / 33500 [  1%]  (Warmup) 
+Chain 4 Iteration:   600 / 33500 [  1%]  (Warmup) 
+Chain 2 Iteration:   600 / 33500 [  1%]  (Warmup) 
+Chain 1 Iteration:   600 / 33500 [  1%]  (Warmup) 
+Chain 3 Iteration:   600 / 33500 [  1%]  (Warmup) 
+Chain 4 Iteration:   700 / 33500 [  2%]  (Warmup) 
+Chain 1 Iteration:   700 / 33500 [  2%]  (Warmup) 
+Chain 2 Iteration:   700 / 33500 [  2%]  (Warmup) 
+Chain 3 Iteration:   700 / 33500 [  2%]  (Warmup) 
+Chain 4 Iteration:   800 / 33500 [  2%]  (Warmup) 
+Chain 1 Iteration:   800 / 33500 [  2%]  (Warmup) 
+Chain 2 Iteration:   800 / 33500 [  2%]  (Warmup) 
+Chain 3 Iteration:   800 / 33500 [  2%]  (Warmup) 
+Chain 4 Iteration:   900 / 33500 [  2%]  (Warmup) 
+Chain 1 Iteration:   900 / 33500 [  2%]  (Warmup) 
+Chain 2 Iteration:   900 / 33500 [  2%]  (Warmup) 
+Chain 3 Iteration:   900 / 33500 [  2%]  (Warmup) 
+Chain 4 Iteration:  1000 / 33500 [  2%]  (Warmup) 
+Chain 1 Iteration:  1000 / 33500 [  2%]  (Warmup) 
+Chain 2 Iteration:  1000 / 33500 [  2%]  (Warmup) 
+Chain 3 Iteration:  1000 / 33500 [  2%]  (Warmup) 
+Chain 4 Iteration:  1100 / 33500 [  3%]  (Warmup) 
+Chain 1 Iteration:  1100 / 33500 [  3%]  (Warmup) 

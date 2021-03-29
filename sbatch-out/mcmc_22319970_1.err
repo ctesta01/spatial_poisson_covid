@@ -1,0 +1,10 @@
+here() starts at /n/home01/ctesta/2021/spatial_poisson_covid
+This is cmdstanr version 0.3.0
+- Online documentation and vignettes at mc-stan.org/cmdstanr
+- CmdStan path set to: /n/home01/ctesta/.cmdstanr/cmdstan-2.26.1
+- Use set_cmdstan_path() to change the path
+Error: package or namespace load failed for ‘tidyverse’ in dyn.load(file, DLLpath = DLLpath, ...):
+ unable to load shared object '/n/home01/ctesta/apps/R/tidyr/libs/tidyr.so':
+  /lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by /n/home01/ctesta/apps/R/tidyr/libs/tidyr.so)
+Execution halted
+srun: error: bloxham-r940: task 0: Exited with exit code 1

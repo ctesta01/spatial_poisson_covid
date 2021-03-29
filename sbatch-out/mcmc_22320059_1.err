@@ -1,0 +1,19 @@
+here() starts at /n/home01/ctesta/2021/spatial_poisson_covid
+This is cmdstanr version 0.3.0
+- Online documentation and vignettes at mc-stan.org/cmdstanr
+- CmdStan path set to: /n/home01/ctesta/.cmdstanr/cmdstan-2.26.1
+- Use set_cmdstan_path() to change the path
+── Attaching packages ─────────────────────────────────────── tidyverse 1.3.0 ──
+✔ tibble  3.1.0     ✔ dplyr   1.0.5
+✔ tidyr   1.1.3     ✔ stringr 1.4.0
+✔ readr   1.4.0     ✔ forcats 0.5.1
+✔ purrr   0.3.4     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ tidyr::extract()   masks magrittr::extract()
+✖ dplyr::filter()    masks stats::filter()
+✖ dplyr::lag()       masks stats::lag()
+✖ purrr::set_names() masks magrittr::set_names()
+Error in ommandArgs(trailingOnly = T) : 
+  could not find function "ommandArgs"
+Execution halted
+srun: error: bloxham-r940: task 0: Exited with exit code 1
