@@ -5,10 +5,10 @@
 
 # dependencies
 library(here)
-source(here("code/dependencies.R"))
+source(here("code/3a_dependencies.R"))
 
 # define variables of interest
-source(here("code/variables_of_interest.R"))
+source(here("code/1c_variables_of_interest.R"))
 
 # specify the period by an argument given when calling Rscript
 # on this file. run this as: 
@@ -34,8 +34,8 @@ model_rstan <-
 # extract period 3 posterior as matrix
 posterior <- as.matrix(model_rstan)
 
-# rename with nice names - period 2
-nice_names <- variables_of_interest_friendly_names[[period]]
+# rename with nice names 
+nice_names <- variables_of_interest[[period]]
 colnames(posterior)[1:length(nice_names)] <- nice_names
 
 
