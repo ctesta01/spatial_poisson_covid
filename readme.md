@@ -48,6 +48,8 @@ Depicted below are the spatial effects estimated by the model in period 3.
 
 ![](figures/spatial_terms_p3.png)
 
+Some counties were omitted from analysis due to missing data. 
+
 #### Convergence Diagnostics
 
 See the [diagnostics.md](diagnostics.md) file for a presentation of traceplots
