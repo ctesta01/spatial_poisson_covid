@@ -24,7 +24,8 @@ with only a small number of parameters. To select these in a parsimonious way,
 we tested parameters which appeared in the top 3 in terms of variable importance
 in any of the LASSO or spatial linear regressions presented in our main manuscript.
 
-![](figures/corrplot.png)
+This is a correlation matrix of the variables originally considered: 
+![correlation matrix](figures/corrplot.png)
 
 ### Results
 
@@ -38,15 +39,15 @@ and 3 (October 1 2020 to February 12 2021).
 
 #### Parameter Estimates 
 
-![](figures/stan_car_poisson_period_2.png)
+![period 2 parameters density plot](figures/stan_car_poisson_period_2.png)
 
-![](figures/stan_car_poisson_period_3.png)
+![period 3 parameters density plot](figures/stan_car_poisson_period_3.png)
 
 #### Spatial Effects
 
 Depicted below are the spatial effects estimated by the model in period 3.
 
-![](figures/spatial_terms_p3.png)
+![map of spatial component in the model](figures/spatial_terms_p3.png)
 
 Some counties were omitted from analysis due to missing data. 
 
