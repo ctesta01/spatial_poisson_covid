@@ -9,7 +9,7 @@ including:
 - Percentage Black
 - Percentage with at least high school education 
 - Median income
-- Political lean from Democratic <-> Republican in the 2020 election
+- Political lean from Democratic to Republican in the 2020 election
 - Governor policy strictness
 
 This work is intended as a supplement to our manuscript, [*The Evolving Roles of
