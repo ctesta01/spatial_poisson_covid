@@ -12,8 +12,8 @@ including:
 - Political lean from Democratic <-> Republican in the 2020 election
 - Governor policy strictness
 
-This work is intended as a supplement to our manuscript, *The Evolving Roles of
-Partisanship and Vulnerability in the COVID-19 Pandemic*.
+This work is intended as a supplement to our manuscript, [*The Evolving Roles of
+Partisanship and Vulnerability in the COVID-19 Pandemic*](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3933453).
 
 ### Variable Selection 
 
