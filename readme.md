@@ -55,6 +55,10 @@ Some counties were omitted from analysis due to missing data.
 See the [diagnostics.md](diagnostics.md) file for a presentation of traceplots
 and the R-hat convergence diagnostics.
 
+#### Read the full write-up 
+
+The full supplement detailing this work is available here, in [supplement/supplement.pdf](https://github.com/ctesta01/spatial_poisson_covid/blob/main/supplement/supplement.pdf).
+
 #### References 
 
 [Spatial Models in Stan: Intrinsic Auto-Regressive Models for Areal Data](https://mc-stan.org/users/documentation/case-studies/icar_stan.html)
